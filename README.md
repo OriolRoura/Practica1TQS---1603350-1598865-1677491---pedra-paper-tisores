@@ -1,1 +1,1 @@
-# Practica1TQS
+Practica1 TQS: pedra paper tisores
