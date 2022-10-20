@@ -8,7 +8,16 @@ class paper_guanya_pedra {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		Game g = new Game();
+		g.addplayer();
+		g.addplayer();
+		g.getplayer(0).setMove(1);
+		g.getplayer(1).setMove(2);
+		g.CalculateRound();
+		assertTrue(g.calculateRound != 1);
+		
+		
+		
 	}
 
 }
