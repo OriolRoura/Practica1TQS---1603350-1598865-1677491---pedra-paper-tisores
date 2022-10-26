@@ -11,14 +11,15 @@ class empat {
 
 	@Test
 	void test() {
-		 Game g = new Game()
-		 g.addPlayer("pepo");
-		 g.addPlayer("joana");
-		 g.getPlayer(0).setMove(1);
-		 g.getPlayer(1).setMove(1);
-		 assertTrue(g.calculateRound != -1);
-		 
-		 
+
+		Game g = new Game();
+		g.addplayer();
+		g.addplayer();
+		g.getplayer(0).setMove(1);
+		g.getplayer(1).setMove(1);
+		g.CalculateRound();
+		assertTrue(g.calculateRound != -1);
+		
 	}
 
 }

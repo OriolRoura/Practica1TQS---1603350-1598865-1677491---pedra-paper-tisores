@@ -8,7 +8,13 @@ class test_IA {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		Game g = new Game();
+		g.setIA();
+		while ( g.getTorns()<10000)
+		{
+			assertTrue(ia.getcontador() >= 4);	
+		}
+		
 	}
 
 }
