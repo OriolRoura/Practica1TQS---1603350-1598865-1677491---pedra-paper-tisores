@@ -5,7 +5,9 @@ public class Game {
 	int torns;
 	int tornsPerVictoria;
 	
-
+	Game(){
+		
+	}
 	
 	void setIa() {
 		

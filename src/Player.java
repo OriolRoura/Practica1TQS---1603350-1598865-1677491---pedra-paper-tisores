@@ -1,9 +1,10 @@
-
+import java.util.Scanner;
 
 public class Player {
 	String nom;
 	int tornsVictoria;
 	Tirada tirada;
+	
 	
 	Player(String n) {
 		nom = n;
@@ -27,8 +28,10 @@ public class Player {
 	}
 	
 	void jugada() {
-		//esperar tirada
-		tirada.setMov(/*resultat de la tirada*/);
+		Scanner scanner = new Scanner(System.in);
+		String line = scanner.nextLine();
+		int num = Integer.parseInt(line);
+		tirada.setMov(num);
 	}
 	
 }

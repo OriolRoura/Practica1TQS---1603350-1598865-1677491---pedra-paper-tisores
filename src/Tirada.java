@@ -15,7 +15,7 @@ public class Tirada {
 			moviment.add(i);
 		}
 		else {
-			//sortir error
+			System.out.printf("tria un nombre bàlid");
 			jugador.jugada();
 		}
 	}
