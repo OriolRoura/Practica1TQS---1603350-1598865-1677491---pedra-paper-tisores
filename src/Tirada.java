@@ -15,8 +15,14 @@ public class Tirada {
 			moviment.add(i);
 		}
 		else {
-			System.out.printf("tria un nombre bàlid");
+			System.out.println("tria una jugada bàlid");
 			jugador.jugada();
 		}
+	}
+	int getMov(int i) {
+		return moviment.get(i);
+	}
+	int getLast() {
+		return moviment.lastIndexOf(moviment);
 	}
 }

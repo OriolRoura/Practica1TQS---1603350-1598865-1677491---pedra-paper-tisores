@@ -6,16 +6,21 @@ public class Player {
 	Tirada tirada;
 	
 	
+	Player(String n, int rang ) {
+		nom = n;
+		tornsVictoria = 0;
+		tirada = new Tirada(rang, this);
+	}
 	Player(String n) {
 		nom = n;
 		tornsVictoria = 0;
-		tirada = null;
+		tirada = new Tirada(3,this);
 	}
 	String getNom() {
-		return null;
+		return nom;
 	}
 	int getTornsVictoria() {
-		return 0;
+		return tornsVictoria;
 	}
 	Tirada getTirada() {
 		return null;
@@ -28,10 +33,17 @@ public class Player {
 	}
 	
 	void jugada() {
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in); //no recordo que es
 		String line = scanner.nextLine();
 		int num = Integer.parseInt(line);
 		tirada.setMov(num);
+	}
+	boolean haveWon(int perVic) {
+		if(tornsVictoria == perVic) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 }
