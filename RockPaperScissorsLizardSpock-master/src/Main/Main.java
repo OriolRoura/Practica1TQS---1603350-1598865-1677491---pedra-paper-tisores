@@ -20,23 +20,8 @@ import Modelo.Partida;
 public class Main {
     public static void main(String[] args) {
 
-    //MVP VISTA PASIVA ---- SWING
-        Partida p1 = new Partida();
-        IVMenu vistaS = new VMenuSwing();
-        PresentadorMenu pMenuS = new PresentadorMenu(vistaS, p1);
-        vistaS.setPresentador(pMenuS);
-        vistaS.iniciar();
-    
-    //MVP VISTA PASIVA ---- CONSOLA
-//        Partida p2 = new Partida();
-//        IVMenu vistaC = new VMenuConsola();
-//        PresentadorMenu pMenuC = new PresentadorMenu(vistaC, p2);
-//        vistaC.setPresentador(pMenuC);
-//        vistaC.iniciar();
-    
-    //MVC ------------ CONSOLA
-//        Controlador controlador = new Controlador();
-//        controlador.controlar();
+        Controlador controlador = new Controlador();
+        controlador.controlar();
     
     }
 }
