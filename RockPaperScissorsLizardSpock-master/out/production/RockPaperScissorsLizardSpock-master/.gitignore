@@ -1,7 +1,12 @@
-/sumarPunsts.class
-/testSumarPunts.class
+/Imagenes/
+/LogicaTest.class
+/MVC/
+/MVP_Pasiva/
+/Main/
 /Modelo/
+/Perisistencia/
 /testJugador.class
 /testOfTests.class
-/tipos.class
-/LogicaTest.class
+/testSumarPunts.class
+/testPartida.class
+/testServicioJugadaBOT.class

@@ -12,6 +12,10 @@ class testOfTests {
 		t2.test();
 		LogicaTest lT = new LogicaTest();
 		lT.testLogica();
+		testPartida t3 = new testPartida();
+		t3.PartidaTest();
+		testServicioJugadaBOT t4 = new testServicioJugadaBOT();
+		t4.ServicioJugadaBOTtest();
 	}
 
 }
