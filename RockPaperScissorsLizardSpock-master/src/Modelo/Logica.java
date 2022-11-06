@@ -1,8 +1,8 @@
 package Modelo;
 
-class Logica {
+public class Logica {
 
-    Jugada analizar(Jugada jugada_Jugador1, Jugada jugada_Jugador2) {
+    public Jugada analizar(Jugada jugada_Jugador1, Jugada jugada_Jugador2) {
         switch (jugada_Jugador1.getJugada_Seleccionada()) {
             case ROCK:
                 switch (jugada_Jugador2.getJugada_Seleccionada()) {
@@ -17,7 +17,6 @@ class Logica {
                     case SPOCK:
                         return jugada_Jugador2; 
                 }
-            break;
 
             case PAPER:
                 switch (jugada_Jugador2.getJugada_Seleccionada()) {
@@ -32,7 +31,7 @@ class Logica {
                     case SPOCK:
                         return jugada_Jugador1;
                 }
-            break;
+
 
             case SCISSORS:
                 switch (jugada_Jugador2.getJugada_Seleccionada()) {
@@ -47,7 +46,7 @@ class Logica {
                     case SPOCK:
                         return jugada_Jugador2;
                 }
-            break;
+            
 
             
             case LIZARD:
@@ -63,7 +62,6 @@ class Logica {
                     case SPOCK:
                         return jugada_Jugador1;
                 }
-            break;
             
             case SPOCK:
                 switch (jugada_Jugador2.getJugada_Seleccionada()) {
@@ -78,7 +76,6 @@ class Logica {
                     case SPOCK:
                         return null;
                 }
-            break;
         }
         System.out.println("ESTO NO TIENE QUE PASAR - REVISA LOGICA.ANALIZAR()");
         return null;

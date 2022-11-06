@@ -1,0 +1,87 @@
+
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+
+import org.junit.jupiter.api.Test;
+
+import Modelo.Jugada;
+import Modelo.Jugador;
+import Modelo.OpcionesJugada;
+import Modelo.Logica;
+
+class LogicaTest {
+
+	@Test
+	public void testLogica() {
+		
+		Logica lt = new Logica();
+		Jugada isRock = new Jugada(); 		isRock.setJugada_Seleccionada(OpcionesJugada.ROCK);
+		Jugada isPaper = new Jugada();		isPaper.setJugada_Seleccionada(OpcionesJugada.PAPER);
+		Jugada isScissors = new Jugada(); 	isScissors.setJugada_Seleccionada(OpcionesJugada.SCISSORS);
+		Jugada isLizard = new Jugada();		isLizard.setJugada_Seleccionada(OpcionesJugada.LIZARD);
+		Jugada isSpock = new Jugada(); 		isSpock.setJugada_Seleccionada(OpcionesJugada.SPOCK);
+
+		//OPCIONS TREIENT PEDRA
+		Jugada rockWinsScissors = lt.analizar(isRock,isScissors);
+		assertEquals(rockWinsScissors, isRock);
+		Jugada rockWinsLizard = lt.analizar(isRock,isLizard);
+		assertEquals(rockWinsLizard, isRock);
+		Jugada rockLosePaper = lt.analizar(isRock,isPaper);
+		assertEquals(rockLosePaper, isPaper);
+		Jugada rockLoseSpock = lt.analizar(isRock,isSpock);
+		assertEquals(rockLoseSpock, isSpock);
+		Jugada rockvsRock = lt.analizar(isRock,isRock);
+		assertEquals(rockvsRock, null);
+		
+		//OPCIONS TREIENT PAPER
+		Jugada PaperLoseScissors = lt.analizar(isPaper,isScissors);
+		assertEquals(PaperLoseScissors, isScissors);
+		Jugada paperLoseLizard = lt.analizar(isPaper,isLizard);
+		assertEquals(paperLoseLizard, isLizard);
+		Jugada paperWinsRock = lt.analizar(isPaper,isRock);
+		assertEquals(paperWinsRock, isPaper);
+		Jugada paperWinsSpock = lt.analizar(isPaper,isSpock);
+		assertEquals(paperWinsSpock, isPaper);
+		Jugada paperVsPaper = lt.analizar(isPaper,isPaper);
+		assertEquals(paperVsPaper, null);
+		
+		//OPCIONS TREIENT TISORES
+		Jugada scissorsLoseRock = lt.analizar(isScissors,isRock);
+		assertEquals(scissorsLoseRock, isRock);
+		Jugada scissorsLoseSpock = lt.analizar(isScissors,isSpock);
+		assertEquals(scissorsLoseSpock, isSpock);
+		Jugada scissorsWinsPaper = lt.analizar(isScissors,isPaper);
+		assertEquals(scissorsWinsPaper, isScissors);
+		Jugada scissorsWinsLizard = lt.analizar(isScissors,isLizard);
+		assertEquals(scissorsWinsLizard, isScissors);
+		Jugada scissorsVsScissors = lt.analizar(isScissors, isScissors);
+		assertEquals(scissorsVsScissors, null);
+		
+		//OPCIONS TREIENT SPOCK
+		Jugada spockWinsScissors = lt.analizar(isSpock,isScissors);
+		assertEquals(spockWinsScissors, isSpock);
+		Jugada spockWinsRock = lt.analizar(isSpock,isRock);
+		assertEquals(spockWinsRock, isSpock);
+		Jugada spockLosePaper = lt.analizar(isSpock,isPaper);
+		assertEquals(spockLosePaper, isPaper);
+		Jugada spockLoseLizard = lt.analizar(isSpock,isLizard);
+		assertEquals(spockLoseLizard, isLizard);
+		Jugada spockVsSpock = lt.analizar(isSpock, isSpock);
+		assertEquals(spockVsSpock, null);
+		
+		//OPCIONS TREIENT LIZARD
+		Jugada lizardWinsSpock = lt.analizar(isLizard,isSpock);
+		assertEquals(lizardWinsSpock, isLizard);
+		Jugada lizardWinsPaper = lt.analizar(isLizard,isPaper);
+		assertEquals(lizardWinsPaper, isLizard);
+		Jugada lizardLoseRock = lt.analizar(isLizard,isRock);
+		assertEquals(lizardLoseRock, isRock);
+		Jugada LizardLoseScissors = lt.analizar(isLizard,isScissors);
+		assertEquals(LizardLoseScissors, isScissors);
+		Jugada lizardvsLizard = lt.analizar(isLizard, isLizard);
+		assertEquals(lizardvsLizard, null);
+		
+		}
+}
