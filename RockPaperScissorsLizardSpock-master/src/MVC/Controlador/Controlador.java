@@ -34,7 +34,7 @@ public class Controlador {
                 partida.setJugador2( new Jugador("BuenardoBOT",TiposJugador.BOT));    
                 break;
             case C:
-                Modelo.PartidaBaseDades partidaBaseDades = new PartidaBaseDades();
+                PartidaBaseDades partidaBaseDades = new MockPartidaBaseDades();
                 partidaBaseDades.carregarPartida();
         }
     }

@@ -19,7 +19,8 @@ public class Vista {
         System.out.println("[1] Jugador vs Jugador.");
         System.out.println("[2] Jugador vs BOT.");
         System.out.println("[3] BOT vs BOT.");
-        System.out.println("[4] Salir.");
+        System.out.println("[4] Cargarpartida.");
+        System.out.println("[5] Salir.");
         partida.setTipo(validacion.inTipo());       
     }
     
@@ -79,6 +80,7 @@ public class Vista {
                         System.out.println(partida.getJugador1().getNombreJugador()+" ,realice su jugada: ");
                         jugada = sb.jugar(jugada); 
                         break;
+                        
                     case 2:
                         ServicioJugadaBOT sb2 = new ServicioJugadaBOT();
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realizo su jugada: ");

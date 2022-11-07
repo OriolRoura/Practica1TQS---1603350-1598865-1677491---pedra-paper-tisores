@@ -2,6 +2,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import Modelo.OpcionesJugada;
+
 class testOfTests {
 
 	@Test
@@ -17,6 +19,24 @@ class testOfTests {
 		testServicioJugadaBOT t4 = new testServicioJugadaBOT();
 		t4.ServicioJugadaBOTtest();
 	}
+	
+	public OpcionesJugada selectPar(int i){
+		switch(i){
+		case 0:
+			return OpcionesJugada.ROCK;
+		case 1:
+			return OpcionesJugada.PAPER;
+		case 2:
+			return OpcionesJugada.SCISSORS;
+		case 3:
+			return OpcionesJugada.SPOCK;
+		case 4:
+			return OpcionesJugada.LIZARD;
+		}
+		
+		return null;
+	}
+
 
 }
 
