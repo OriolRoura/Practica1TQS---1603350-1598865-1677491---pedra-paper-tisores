@@ -1,12 +1,7 @@
 package MVC.Controlador;
 
 import MVC.Vista.Vista;
-import Modelo.Jugador;
-import Modelo.Partida;
-import Modelo.Ronda;
-import Modelo.ServicioPartida;
-import Modelo.ServicioRonda;
-import Modelo.TiposJugador;
+import Modelo.*;
 
 public class Controlador {
     private Vista vista;
@@ -37,7 +32,10 @@ public class Controlador {
             case BvB:
                 partida.setJugador1( new Jugador("DayanBOT",TiposJugador.BOT));
                 partida.setJugador2( new Jugador("BuenardoBOT",TiposJugador.BOT));    
-                break;    
+                break;
+            case C:
+                Modelo.PartidaBaseDades partidaBaseDades = new PartidaBaseDades();
+                partidaBaseDades.carregarPartida();
         }
     }
     

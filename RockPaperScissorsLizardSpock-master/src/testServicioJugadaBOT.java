@@ -1,7 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
 import Modelo.ServicioJugadaBOT;
 import Modelo.Jugada;
 import Modelo.OpcionesJugada;

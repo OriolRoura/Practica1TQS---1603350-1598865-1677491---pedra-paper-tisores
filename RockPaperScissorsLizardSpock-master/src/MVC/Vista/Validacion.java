@@ -25,6 +25,9 @@ public class Validacion {
                             tipo=TiposPartida.BvB;
                             break;
                         case 4:
+                            tipo=TiposPartida.C;
+                            break;
+                        case 5:
                             System.exit(0);
                     }                  
                 }
