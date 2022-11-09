@@ -35,7 +35,8 @@ public class Controlador {
                 break;
             case C:
                 PartidaBaseDades partidaBaseDades = new MockPartidaBaseDades();
-                partidaBaseDades.carregarPartida();
+                Partida p = partidaBaseDades.carregarPartida();
+                partida = p;
         }
     }
     
