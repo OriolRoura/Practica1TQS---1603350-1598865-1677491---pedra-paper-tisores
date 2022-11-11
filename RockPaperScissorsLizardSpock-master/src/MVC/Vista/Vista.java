@@ -38,6 +38,7 @@ public class Vista {
         }               
     }
     
+    
     public void establecerPuntos(){
         Validacion validacion = new Validacion();
         System.out.println("Ingrese Puntos necesarios para ganar: ");
@@ -112,12 +113,19 @@ public class Vista {
         //System.out.println(partida.getRondas().size());
     }
     
-    public void mostrarGanadorRonda(int i){
-        if(partida.getRondas().get(i).getGanadorRonda()!=null){
+    public boolean mostrarGanadorRonda(int i){
+    	Validacion validacion = new Validacion();       
+    	if(partida.getRondas().get(i).getGanadorRonda()!=null){
             System.out.println("El ganador de esta ronda es: "+partida.getRondas().get(i).getGanadorRonda().getNombreJugador());
         }
         else{
             System.out.println("Ronda empatada.");
+        }
+        System.out.println("voleu guardar partida? 1 per confirmar");
+        if(validacion.inInt() == 1) {
+        	return true;
+        }else {
+        	return false;
         }
     }
     

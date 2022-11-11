@@ -1,5 +1,7 @@
-package Modelo;
+package tests;
 
+import MVC.Vista.Vista;
+import Modelo.*;
 
 
 import java.util.ArrayList;
@@ -55,4 +57,3 @@ public class MockPartidaBaseDades implements PartidaBaseDades {
 	}
 
 }
-
