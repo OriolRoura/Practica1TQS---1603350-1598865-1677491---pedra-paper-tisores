@@ -15,7 +15,7 @@ public class Vista {
     
     public void mostrarIngreso(){
     	//TODO passar Validación al controlador per a fer un mock
-        Validacion validacion = new Validacion(); 
+        Validacion validacion = new DefaultValidacion(); 
         System.out.println("Ingrese Modo de Juego: ");
         System.out.println("[1] Jugador vs Jugador.");
         System.out.println("[2] Jugador vs BOT.");
@@ -26,7 +26,7 @@ public class Vista {
     }
     
     public void registrarJugador(int j){
-        Validacion validacion = new Validacion();
+        Validacion validacion = new DefaultValidacion();
         System.out.println("Ingrese el Nombre del Jugador N° 0"+j+":");
         switch(j){
             case 1:
@@ -40,14 +40,14 @@ public class Vista {
     
     
     public void establecerPuntos(){
-        Validacion validacion = new Validacion();
+        Validacion validacion = new DefaultValidacion();
         System.out.println("Ingrese Puntos necesarios para ganar: ");
         partida.setAlMejorDe(validacion.inInt());
     }
     
     public Jugada realizarJugada(int j){       
         Jugada jugada = new Jugada();
-        Validacion validacion = new Validacion();       
+        Validacion validacion = new DefaultValidacion();       
         switch (partida.getTipo()) {
             case JvJ:
                 switch(j){
@@ -114,7 +114,7 @@ public class Vista {
     }
     
     public boolean mostrarGanadorRonda(int i){
-    	Validacion validacion = new Validacion();       
+    	Validacion validacion = new DefaultValidacion();       
     	if(partida.getRondas().get(i).getGanadorRonda()!=null){
             System.out.println("El ganador de esta ronda es: "+partida.getRondas().get(i).getGanadorRonda().getNombreJugador());
         }
