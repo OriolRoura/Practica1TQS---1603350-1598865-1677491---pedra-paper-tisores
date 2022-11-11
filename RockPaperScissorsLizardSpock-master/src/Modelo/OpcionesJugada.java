@@ -1,5 +1,5 @@
 package Modelo;
-
+		//TODO falta test
 public enum OpcionesJugada {
     ROCK('R'),
     PAPER('P'),
@@ -7,7 +7,7 @@ public enum OpcionesJugada {
     LIZARD('L'),
     SPOCK('V');
     private char caracter;
-    
+    //TODO testejar
     OpcionesJugada(char c){
         this.caracter=c;
     }

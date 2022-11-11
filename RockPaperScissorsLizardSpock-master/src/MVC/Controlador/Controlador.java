@@ -12,6 +12,19 @@ public class Controlador {
         vista = new Vista(partida);       
     }
 
+    public void setVista(Vista v) {
+    	vista = v;
+    }
+    public void setPartida(Partida p) {
+    	partida = p;
+    }
+    public Partida getPartida() {
+    	return partida;
+    }
+    public Vista getVista() {
+    	return vista;
+    }
+    
     public void controlar(){
         vista.mostrarIngreso();
         asignarJugadores();
@@ -20,10 +33,10 @@ public class Controlador {
     }
     
     public void asignarJugadores(){        
-        switch (partida.getTipo()) {
+        switch (partida.getTipo()) { //fer un mock per a testegar
             case JvJ:
-                vista.registrarJugador(1);
-                vista.registrarJugador(2);
+                vista.registrarJugador(1); //també aqui
+                vista.registrarJugador(2); //i aqui
                 break;
             case JvB:
                 vista.registrarJugador(1);

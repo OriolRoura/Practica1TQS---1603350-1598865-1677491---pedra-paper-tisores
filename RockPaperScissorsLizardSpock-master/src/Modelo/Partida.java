@@ -2,7 +2,9 @@ package Modelo;
 
 import java.util.ArrayList;
 
-public class Partida {
+
+
+public class Partida  {
     private String IdPartida;
     private TiposPartida tipo;
     private Jugador jugador1;
@@ -13,7 +15,9 @@ public class Partida {
     
     private ArrayList<Ronda> Rondas = new ArrayList();
     private int alMejorDe=3;
-    
+    public void DefaultPartida() {
+    	
+    }
     public void agregarRonda(Ronda r){
         Rondas.add(r);
     }

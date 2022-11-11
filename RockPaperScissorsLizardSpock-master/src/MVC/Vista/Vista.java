@@ -6,7 +6,7 @@ import Modelo.OpcionesJugada;
 import Modelo.Partida;
 import Modelo.ServicioJugadaBOT;
 import Modelo.TiposJugador;
-
+	//TODO segurament caldra un mock
 public class Vista {
     private Partida partida;
     public Vista(Partida partida){
@@ -14,14 +14,15 @@ public class Vista {
     }
     
     public void mostrarIngreso(){
-        Validacion validacion = new Validacion();
+    	//TODO passar Validación al controlador per a fer un mock
+        Validacion validacion = new Validacion(); 
         System.out.println("Ingrese Modo de Juego: ");
         System.out.println("[1] Jugador vs Jugador.");
         System.out.println("[2] Jugador vs BOT.");
         System.out.println("[3] BOT vs BOT.");
         System.out.println("[4] Cargarpartida.");
         System.out.println("[5] Salir.");
-        partida.setTipo(validacion.inTipo());       
+        partida.setTipo(validacion.inTipo());      //falta excepcio per valors 
     }
     
     public void registrarJugador(int j){

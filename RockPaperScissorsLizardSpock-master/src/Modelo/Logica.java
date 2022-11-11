@@ -30,6 +30,7 @@ public class Logica {
                         return jugada_Jugador2; 
                     case SPOCK:
                         return jugada_Jugador1;
+                        	
                 }
 
 
@@ -75,7 +76,10 @@ public class Logica {
                         return jugada_Jugador2; 
                     case SPOCK:
                         return null;
+                    	
                 }
+
+                
         }
         System.out.println("ESTO NO TIENE QUE PASAR - REVISA LOGICA.ANALIZAR()");
         return null;
