@@ -9,7 +9,7 @@ public class MockValidacion implements Validacion{
     private Scanner in = new Scanner(System.in); 
     int contadorIn=4;
     int contadorInt = 2;
-    int contadorString =2;
+    int contadorString =4;
     int contadorJugada=1;
     public TiposPartida inTipo(){
         TiposPartida tipo=null;                
@@ -31,6 +31,8 @@ public class MockValidacion implements Validacion{
                     case 4:
                         tipo=TiposPartida.C;
                         break;
+                    case 5:
+                        System.exit(0);
                 } 
                 
             }
@@ -57,7 +59,7 @@ public class MockValidacion implements Validacion{
     
     public String inNombre(){
     	contadorString++;
-    	if(contadorString == 3) {
+    	if(contadorString == 5) {
     		contadorString=0;
     	}
     	switch(contadorString){
@@ -65,8 +67,12 @@ public class MockValidacion implements Validacion{
         	return (String)"Carmen";
         case 1:
         	return (String)"Martina";
-        default:
+        case 2:
         	return (String)"Jose";
+        case 3:
+        	return (String)"Pere";
+        default:
+        	return (String)"Montoya";
         	
     	}
     	

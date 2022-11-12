@@ -152,13 +152,15 @@ public class DefaultVista implements Vista{
         else{
             System.out.println("Ronda empatada.");
         }
-    	
-        System.out.println("voleu guardar partida? 7 per confirmar");
-        if(validacion.inInt() == 7) {
-        	return true;
-        }else {
-        	return false;
-        }
+    	if(partida.getJugador1().getTipo() != TiposJugador.BOT) {
+    		System.out.println("voleu guardar partida? 7 per confirmar");
+    		if(validacion.inInt() == 7) {
+            	return true;
+            }else {
+            	return false;
+            }
+    	}
+    	return false;
     }
     
     public void mostrarGanadorPartida(){

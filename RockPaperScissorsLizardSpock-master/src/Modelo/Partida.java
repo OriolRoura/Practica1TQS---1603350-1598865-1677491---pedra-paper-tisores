@@ -92,7 +92,7 @@ public class Partida  {
     }
 
     public int getNroRonda() {
-        return Rondas.size()+1;
+        return Rondas.size();
     }
 
     public int getAlMejorDe() {

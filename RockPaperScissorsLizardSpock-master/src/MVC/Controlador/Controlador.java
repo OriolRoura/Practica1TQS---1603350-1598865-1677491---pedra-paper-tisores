@@ -12,7 +12,7 @@ public class Controlador {
         partida = new Partida();
         Validacion validacion = new DefaultValidacion();
         ServicioJugadaBOT sb = new DefaultServicioJugadaBOT();
-        vista = new Vista(partida, validacion, sb);       
+        vista = new DefaultVista(partida, validacion, sb);       
     }
 
     public void setVista(Vista v) {

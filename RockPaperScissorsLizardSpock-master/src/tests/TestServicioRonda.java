@@ -4,7 +4,8 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.After;
+import org.junit.Before;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,6 @@ class TestServicioRonda {
 	Partida p;
 	ServicioPartida sp;
 	ServicioRonda sr; 
-	ArrayList<Jugador> victory;
 	
 	
 	void Run() {
@@ -39,7 +39,7 @@ class TestServicioRonda {
 	/**
 	 * Test method for {@link Modelo.ServicioRonda#evaluarGanador(Modelo.Ronda)}.
 	 */
-	@Test
+	@Before
 
 	void SetUp() {
 		p = new Partida();
@@ -52,12 +52,7 @@ class TestServicioRonda {
 		sr = new ServicioRonda();
 		ArrayList<Ronda> rondas = new ArrayList();
 		p.setRondas(rondas);
-		Jugador jug1 = p.getJugador1();
-		Jugador jug2 = p.getJugador2();
-		Jugador victory[] = {null,jug2,jug1,jug2,jug1,jug1,null,jug2,jug1,jug2,jug2,jug1,null,jug2,jug1,jug1,jug2,jug1,null,jug2,jug2,jug1,jug2,jug1,null,jug1};
-		for(int i=0;i< victory.length; i++) {
-			this.victory.add(victory[0]);
-		}
+
 		int count = 0;
 		for(int i=0;i<5;i++) {
 			for(int n = 0;n<(5);n++) {
@@ -73,9 +68,7 @@ class TestServicioRonda {
 				p.agregarRonda(r);
 				sr.evaluarGanador(r);
 				Partida g = sp.evaluarGanador(p);
-				
 				count++;
-				
 			}
 		}
 		Ronda r = new Ronda();
@@ -92,23 +85,25 @@ class TestServicioRonda {
 		sr.evaluarGanador(r);
 		count = 0;
 	}
-	
+	@Test
 	void testEvaluarGanador() {
+		Jugador jug1 = p.getJugador1();
+		Jugador jug2 = p.getJugador2();
+		Jugador[] victory = {null,jug2,jug1,jug2,jug1,jug1,null,jug2,jug1,jug2,jug2,jug1,null,jug2,jug1,jug1,jug2,jug1,null,jug2,jug2,jug1,jug2,jug1,null,jug1};
 		
 		ArrayList<Ronda> rondas = p.getRondas();
-		for(int i=0;i< victory.size();i++) {
-			assert rondas.get(i).getGanadorRonda() == victory.get(i) : String.format("no ha guanyate el que havia de guanyar en la ronda [%i]", i);
+		for(int i=0;i< victory.length;i++) {
+			assert rondas.get(i).getGanadorRonda() == victory[i] : String.format("no ha guanyate el que havia de guanyar en la ronda [%i]", i);
 		}
 	}
-	
+	@After
 	void tearDown() {
 		 p = null;
 		 sp = null;
 		 sr = null; 
-		 victory = null;
 		 System.gc();
 	}
-	
+
 	
 	public OpcionesJugada selectPar(int i){
 		switch(i){

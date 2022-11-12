@@ -4,6 +4,8 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.After;
+import org.junit.Before;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,13 +17,32 @@ import Modelo.TiposJugador;
  *
  */
 class TestJugador {
-
+	Jugador j ;
+	
+void run() {
+	setUp();
+	
+	testJugadorStringTiposJugador();
+	testJugador();
+	testGetNombreJugador();
+	testSetNombreJugador();
+	testGetTipo();
+	testSetTipo();
+	testToString();
+	
+	tearDown();
+}
+	@Before
+	void setUp() {
+		j = new Jugador("..dadw",TiposJugador.PERSONA);
+	}
 	/**
 	 * Test method for {@link Modelo.Jugador#Jugador(java.lang.String, Modelo.TiposJugador)}.
 	 */
+	
+	
 	@Test
 	void testJugadorStringTiposJugador() {
-		Jugador j = new Jugador("..dadw",TiposJugador.PERSONA);
 		assert j != null && j.getNombreJugador() == "..dadw" && j.getTipo() == TiposJugador.PERSONA : "nom o tipo no  creat correctament"; 
 	}
 
@@ -31,7 +52,7 @@ class TestJugador {
 	@Test
 	void testJugador() {
 		Jugador j = new Jugador();
-		assert j != null && j == new Jugador() : "el jugador buit s'ha creat incorrectament";
+		assert j != null : "el jugador buit s'ha creat incorrectament";
 	}
 
 	/**
@@ -39,7 +60,6 @@ class TestJugador {
 	 */
 	@Test
 	void testGetNombreJugador() {
-		Jugador j = new Jugador("..dadw",TiposJugador.PERSONA);
 		assert j.getNombreJugador() == "..dadw": "nom mostrat no es el correcte"; 
 	
 	}
@@ -49,7 +69,6 @@ class TestJugador {
 	 */
 	@Test
 	void testSetNombreJugador() {
-		Jugador j = new Jugador("..dadw",TiposJugador.PERSONA);
 		j.setNombreJugador("+++werfd33");
 		assert j.getNombreJugador() != "..dadw" : "ha mostrat el nom antic";
 		assert j.getNombreJugador() == "+++werfd33": "nom no ha canviat correctament"; 
@@ -64,7 +83,6 @@ class TestJugador {
 	 */
 	@Test
 	void testGetTipo() {
-		Jugador j = new Jugador("..dadw",TiposJugador.PERSONA);
 		assert j.getTipo() == TiposJugador.PERSONA: "tipus mostrat no es el correcte"; 
 	
 	}
@@ -74,7 +92,6 @@ class TestJugador {
 	 */
 	@Test
 	void testSetTipo() {
-		Jugador j = new Jugador("..dadw",TiposJugador.PERSONA);
 		j.setTipo(TiposJugador.BOT);
 		assert j.getTipo() != TiposJugador.PERSONA : "ha mostrat el tipus antic";
 		assert j.getTipo() == TiposJugador.BOT: "tipus no ha canviat correctament"; 
@@ -85,9 +102,13 @@ class TestJugador {
 	 * Test method for {@link Modelo.Jugador#toString()}.
 	 */
 	@Test
-	void testToString() {
-		//TODO no se com es fa
-		fail("Not yet implemented");
+	void testToString() { 
+		j.toString();
 	}
-
+	
+	@After
+	void tearDown() {
+		j = null;
+		System.gc();
+	}
 }

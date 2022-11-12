@@ -11,6 +11,9 @@ import Modelo.Jugada;
 import Modelo.Jugador;
 import Modelo.OpcionesJugada;
 import Modelo.TiposJugador;
+import org.junit.After;
+import org.junit.Before;
+
 
 /**
  * @author Oriol
@@ -18,16 +21,20 @@ import Modelo.TiposJugador;
  */
 class TestJugada {
 
+
+	
 	/**
 	 * Test method for {@link Modelo.Jugada#Jugada(Modelo.Jugador, Modelo.OpcionesJugada)}.
 	 */
 	@Test
 	void testJugadaJugadorOpcionesJugada() {
-		Jugada j = new Jugada(new Jugador(),OpcionesJugada.ROCK);
+		Jugador game = new Jugador();
+		Jugada j = new Jugada(game, OpcionesJugada.ROCK);
 		Jugada g = new Jugada();
 		g.setJugada_Seleccionada(OpcionesJugada.ROCK);
-		g.setJugador(new Jugador());
-		assert j != null && j == g;
+		g.setJugador(game);
+		assert j.getJugador() == g.getJugador() && j.getJugada_Seleccionada() == g.getJugada_Seleccionada();
 	}
+	
 
 }

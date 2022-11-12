@@ -12,23 +12,53 @@ import Modelo.Jugador;
 import Modelo.OpcionesJugada;
 import Modelo.Ronda;
 import Modelo.TiposJugador;
+import org.junit.After;
+import org.junit.Before;
+
 
 /**
  * @author Oriol
  *
  */
 class TestRonda {
-
+	Ronda r;
+	
+	void Run() {
+		setUp();
+		testRondaInt();
+		testRonda();
+		testGetNumeroRonda();
+		testSetNumeroRonda();
+		testGetJugada_Jugador1();
+		testSetJugada_Jugador1();
+		testGetJugada_Jugador2();
+		testSetJugada_Jugador2();
+		testGetGanadorRonda();
+		testSetGanadorRonda();
+		testToString();
+		
+		tearDown();
+	}
+	
+	
+	
 	/**
 	 * Test method for {@link Modelo.Ronda#Ronda(int)}.
 	 */
+	
+	@Before
+	void setUp() {
+		r = new Ronda();
+	}
+	
+	
 	@Test
 	void testRondaInt() {
 		for (int i = 0; i< 10; i++) {
 			Ronda r = new Ronda(i);
 			Ronda r2 = new Ronda();
 			r2.setNumeroRonda(i);
-			assert r == r2 : "les rondes no coincideixen";
+			assert r.getNumeroRonda() == r2.getNumeroRonda() : "les rondes no coincideixen";
 		}
 		
 	}
@@ -38,8 +68,7 @@ class TestRonda {
 	 */
 	@Test
 	void testRonda() {
-		Ronda r = new Ronda();
-		assert r == new Ronda();
+		assert r != null;
 	}
 
 	/**
@@ -58,7 +87,6 @@ class TestRonda {
 	 */
 	@Test
 	void testSetNumeroRonda() {
-		Ronda r = new Ronda(0);
 		for (int i = 0; i< 10; i++) {
 			 r.setNumeroRonda(i);
 			assert r.getNumeroRonda() == i : "les rondes no coincideixen";
@@ -70,7 +98,6 @@ class TestRonda {
 	 */
 	@Test
 	void testGetJugada_Jugador1() {
-		Ronda r = new Ronda();
 		Jugada j = new Jugada();
 		j.setJugada_Seleccionada(OpcionesJugada.PAPER);
 		r.setJugada_Jugador1(j);
@@ -82,7 +109,6 @@ class TestRonda {
 	 */
 	@Test
 	void testSetJugada_Jugador1() {
-		//TODO revisar(els set i get són iguals)
 		Ronda r = new Ronda();
 		Jugada j = new Jugada();
 		j.setJugada_Seleccionada(OpcionesJugada.PAPER);
@@ -95,7 +121,6 @@ class TestRonda {
 	 */
 	@Test
 	void testGetJugada_Jugador2() {
-		Ronda r = new Ronda();
 		Jugada j = new Jugada();
 		j.setJugada_Seleccionada(OpcionesJugada.PAPER);
 		r.setJugada_Jugador2(j);
@@ -107,8 +132,6 @@ class TestRonda {
 	 */
 	@Test
 	void testSetJugada_Jugador2() {
-		//TODO revisar(els set i get són iguals)
-		Ronda r = new Ronda();
 		Jugada j = new Jugada();
 		j.setJugada_Seleccionada(OpcionesJugada.PAPER);
 		r.setJugada_Jugador2(j);
@@ -120,7 +143,6 @@ class TestRonda {
 	 */
 	@Test
 	void testGetGanadorRonda() {
-		Ronda r = new Ronda();
 		Jugador j = new Jugador("susan",TiposJugador.PERSONA);
 		r.setGanadorRonda(j);
 		assert r.getGanadorRonda() == j;
@@ -131,8 +153,6 @@ class TestRonda {
 	 */
 	@Test
 	void testSetGanadorRonda() {
-		//TODO revisar(els set i get són iguals)
-		Ronda r = new Ronda();
 		Jugador j = new Jugador("susan",TiposJugador.PERSONA);
 		r.setGanadorRonda(j);
 		assert r.getGanadorRonda() == j;
@@ -143,7 +163,12 @@ class TestRonda {
 	 */
 	@Test
 	void testToString() {
-		//TODO He de mirar com fer-ho
+		r.toString();
+	}
+	
+	@After
+	void tearDown() {
+		r = null;
 	}
 
 

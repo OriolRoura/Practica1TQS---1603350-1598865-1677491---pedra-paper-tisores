@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 import Modelo.Jugada;
 import Modelo.Logica;
 import Modelo.OpcionesJugada;
+import org.junit.After;
+import org.junit.Before;
+
 
 /**
  * @author Oriol
@@ -31,6 +34,8 @@ class TestLogica {
 		tearDown();
 	}
 	
+
+	@Before
 	void SetUp() {
 		lt = new Logica();
 		isRock = new Jugada(); 		isRock.setJugada_Seleccionada(OpcionesJugada.ROCK);
@@ -107,6 +112,7 @@ class TestLogica {
 		assertEquals(lizardvsLizard, null);
 	}
 
+	@After
 	void tearDown() {
 		isRock = null; 
 		isPaper = null; 

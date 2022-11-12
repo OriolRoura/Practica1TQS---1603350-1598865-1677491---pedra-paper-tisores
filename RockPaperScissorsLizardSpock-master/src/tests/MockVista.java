@@ -8,28 +8,28 @@ import Modelo.OpcionesJugada;
 import Modelo.Partida;
 import Modelo.ServicioJugadaBOT;
 import Modelo.TiposJugador;
-//TODO segurament caldra un mock
+
 public class MockVista implements Vista {
+	private Validacion validacion; 
     private Partida partida;
+    ServicioJugadaBOT sb;
 
-    public Vista(Partida partida){
+    public MockVista(Partida partida,Validacion validacion, ServicioJugadaBOT sb){
         this.partida=partida;
+        this.validacion=validacion;
+        this.sb = sb;
     }
-
     public void mostrarIngreso(){
-        //TODO passar Validación al controlador per a fer un mock
-        DefaultValidacion validacion = new DefaultValidacion();
         System.out.println("Ingrese Modo de Juego: ");
         System.out.println("[1] Jugador vs Jugador.");
         System.out.println("[2] Jugador vs BOT.");
         System.out.println("[3] BOT vs BOT.");
         System.out.println("[4] Cargarpartida.");
         System.out.println("[5] Salir.");
-        partida.setTipo(validacion.inTipo());      //falta excepcio per valors
+        partida.setTipo(validacion.inTipo());
     }
 
     public void registrarJugador(int j){
-        DefaultValidacion validacion = new DefaultValidacion();
         System.out.println("Ingrese el Nombre del Jugador N° 0"+j+":");
         switch(j){
             case 1:
@@ -43,14 +43,12 @@ public class MockVista implements Vista {
 
 
     public void establecerPuntos(){
-        DefaultValidacion validacion = new DefaultValidacion();
         System.out.println("Ingrese Puntos necesarios para ganar: ");
         partida.setAlMejorDe(validacion.inInt());
     }
 
     public Jugada realizarJugada(int j){
         Jugada jugada = new Jugada();
-        DefaultValidacion validacion = new DefaultValidacion();
         switch (partida.getTipo()) {
             case JvJ:
                 switch(j){
@@ -71,8 +69,7 @@ public class MockVista implements Vista {
                         mostrarIngresoJugada();
                         jugada.setJugada_Seleccionada(validacion.inJugada());
                         break;
-                    case 2:
-                        ServicioJugadaBOT sb = new ServicioJugadaBOT();
+                    case 2:;
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realizo su jugada: ");
                         jugada = sb.jugar(jugada);
                         break;
@@ -81,15 +78,14 @@ public class MockVista implements Vista {
             case BvB:
                 switch(j){
                     case 1:
-                        ServicioJugadaBOT sb = new ServicioJugadaBOT();
                         System.out.println(partida.getJugador1().getNombreJugador()+" ,realice su jugada: ");
                         jugada = sb.jugar(jugada);
                         break;
 
                     case 2:
-                        ServicioJugadaBOT sb2 = new ServicioJugadaBOT();
+
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realizo su jugada: ");
-                        jugada = sb2.jugar(jugada);
+                        jugada = sb.jugar(jugada);
                         break;
                 }
                 break;
@@ -117,15 +113,14 @@ public class MockVista implements Vista {
     }
 
     public boolean mostrarGanadorRonda(int i){
-        DefaultValidacion validacion = new DefaultValidacion();
         if(partida.getRondas().get(i).getGanadorRonda()!=null){
             System.out.println("El ganador de esta ronda es: "+partida.getRondas().get(i).getGanadorRonda().getNombreJugador());
         }
         else{
             System.out.println("Ronda empatada.");
         }
-        System.out.println("voleu guardar partida? 1 per confirmar");
-        if(validacion.inInt() == 1) {
+        System.out.println("voleu guardar partida? 6 per confirmar");
+        if(validacion.inInt() == 6) {
             return true;
         }else {
             return false;
@@ -165,5 +160,10 @@ public class MockVista implements Vista {
         }
         return retorno;
     }
+
+	@Override
+	public Partida getPartida() {
+		return partida;
+	}
 }
 

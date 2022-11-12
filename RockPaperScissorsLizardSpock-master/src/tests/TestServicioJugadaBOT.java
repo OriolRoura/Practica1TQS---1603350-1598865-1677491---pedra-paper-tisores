@@ -8,18 +8,39 @@ import Modelo.DefaultServicioJugadaBOT;
 import Modelo.Jugada;
 import Modelo.OpcionesJugada;
 import Modelo.ServicioJugadaBOT;
+import org.junit.After;
+import org.junit.Before;
+
 
 class TestServicioJugadaBOT {
-		//TODO millorar-lo
-	@Test
+	ServicioJugadaBOT s1 ;
 	
-	void testJugar() {
-		ServicioJugadaBOT s1 = new DefaultServicioJugadaBOT();
-		Jugada j1 = new Jugada();
-		j1 = s1.jugar(j1);
-		
-		assert ((j1.getJugada_Seleccionada()) == (OpcionesJugada.ROCK)|| (j1.getJugada_Seleccionada()) == (OpcionesJugada.PAPER)||(j1.getJugada_Seleccionada()) == (OpcionesJugada.SCISSORS)||(j1.getJugada_Seleccionada()) == (OpcionesJugada.LIZARD)||(j1.getJugada_Seleccionada()) == (OpcionesJugada.SPOCK)) : "no es del tipos correcte";
 	
+	void run() {
+		startUp();
+		testJugar();
+		tearDown();
 	}
-
+	
+	
+	@Before
+	void startUp() {
+		s1 = new DefaultServicioJugadaBOT();
+	}
+	
+	@Test
+	void testJugar() {
+		
+		for(int i = 0;i< 50; i++) {
+			Jugada j1 = new Jugada();
+			j1 = s1.jugar(j1);
+			assert ((j1.getJugada_Seleccionada()) == (OpcionesJugada.ROCK)|| (j1.getJugada_Seleccionada()) == (OpcionesJugada.PAPER)||(j1.getJugada_Seleccionada()) == (OpcionesJugada.SCISSORS)||(j1.getJugada_Seleccionada()) == (OpcionesJugada.LIZARD)||(j1.getJugada_Seleccionada()) == (OpcionesJugada.SPOCK)) : "no es del tipos correcte";
+		}
+	}
+	
+	@After
+	void tearDown() {
+		s1 = null;
+		System.gc();
+	}
 }

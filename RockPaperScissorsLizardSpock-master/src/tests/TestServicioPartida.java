@@ -18,6 +18,9 @@ import Modelo.ServicioPartida;
 import Modelo.ServicioRonda;
 import Modelo.TiposJugador;
 import Modelo.TiposPartida;
+import org.junit.After;
+import org.junit.Before;
+
 
 /**
  * @author Oriol
@@ -39,22 +42,24 @@ class TestServicioPartida {
 		tearDown();
 	}
 	
+	@Before
 	void SetUp(){
-		Partida p = new Partida();
+		p = new Partida();
 		p.setIdPartida("test");
 		p.setAlMejorDe(11);
 		p.setJugador1(new Jugador("susan",TiposJugador.PERSONA));
 		p.setJugador2(new Jugador("manolo",TiposJugador.PERSONA));
 		p.setTipo(TiposPartida.JvJ);
-		ServicioPartida sp = new ServicioPartida();
-		ServicioRonda sr = new ServicioRonda();
 		ArrayList<Ronda> Rondas = new ArrayList();
 		count = 0;
+		sp = new ServicioPartida();
+		sr = new ServicioRonda(); 
 	}
 	/**
 	 * Test method for {@link Modelo.ServicioPartida#evaluarGanador(Modelo.Partida)}.
 	 */
-
+	
+	
 	@Test
 	void testEvaluarGanador() {	
 		
@@ -93,6 +98,8 @@ class TestServicioPartida {
 		assert g.getGanador() == p.getJugador2() : "No ha gaunyat el jugador correcte";
 		
 	}
+	
+	@After
 	void tearDown() {
 		p = null;
 		sp = null;
