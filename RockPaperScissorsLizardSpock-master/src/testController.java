@@ -1,11 +1,14 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import MVC.Vista.DefaultVista;
 import org.junit.jupiter.api.Test;
 
 import MVC.Controlador.Controlador;
 import MVC.Vista.Vista;
 import Modelo.Partida;
-	//TODO all
+import tests.MockVista;
+
+//TODO all
 class testController {
 	Controlador c;
 	@Test
