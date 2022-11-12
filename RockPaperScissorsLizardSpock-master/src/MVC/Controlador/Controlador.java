@@ -1,15 +1,18 @@
 package MVC.Controlador;
 import tests.MockPartidaBaseDades;
-import MVC.Vista.Vista;
+import MVC.Vista.*;
 import Modelo.*;
 
 public class Controlador {
     private Vista vista;
-    private Partida partida;    
+    private Partida partida;
+  
     
     public Controlador(){
         partida = new Partida();
-        vista = new Vista(partida);       
+        Validacion validacion = new DefaultValidacion();
+        ServicioJugadaBOT sb = new DefaultServicioJugadaBOT();
+        vista = new Vista(partida, validacion, sb);       
     }
 
     public void setVista(Vista v) {
@@ -54,17 +57,23 @@ public class Controlador {
     }
     
     public void iniciarJuego(){
+    	PartidaBaseDades partidaBaseDades = new MockPartidaBaseDades();
         ServicioPartida sp = new ServicioPartida();
         ServicioRonda sr = new ServicioRonda();
+        boolean guardar = false;
         int i=0;
         do{
             System.out.println("Partida al mejor de :"+partida.getAlMejorDe());
             realizarRonda(i);
             sr.evaluarGanador(partida.getRondas().get(i));
-            vista.mostrarGanadorRonda(i);
+            guardar = vista.mostrarGanadorRonda(i);
             sp.evaluarGanador(partida);
             i++;
+            if(guardar) {
+            	partidaBaseDades.guardarPartida(partida);	
+            }
         }while(partida.getGanador()==null);
+        	
         vista.mostrarGanadorPartida();
     }
     

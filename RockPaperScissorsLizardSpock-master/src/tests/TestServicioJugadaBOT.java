@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import Modelo.DefaultServicioJugadaBOT;
 import Modelo.Jugada;
 import Modelo.OpcionesJugada;
 import Modelo.ServicioJugadaBOT;
@@ -13,7 +14,7 @@ class TestServicioJugadaBOT {
 	@Test
 	
 	void testJugar() {
-		ServicioJugadaBOT s1 = new ServicioJugadaBOT();
+		ServicioJugadaBOT s1 = new DefaultServicioJugadaBOT();
 		Jugada j1 = new Jugada();
 		j1 = s1.jugar(j1);
 		

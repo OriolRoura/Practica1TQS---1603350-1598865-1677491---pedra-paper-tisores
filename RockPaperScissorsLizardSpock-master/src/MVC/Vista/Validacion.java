@@ -11,7 +11,7 @@ public interface Validacion {
     public String inNombre();
     
     public OpcionesJugada inJugada();
-    
+   
     private void mostrarError(String formato){
         System.out.println("Error de Formato.. "+ "Ingrese un valor con formato: " + formato + "\n" );
     }

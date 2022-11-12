@@ -1,53 +1,72 @@
 package MVC.Vista;
 
+import Modelo.DefaultServicioJugadaBOT;
 import Modelo.Jugada;
 import Modelo.Jugador;
 import Modelo.OpcionesJugada;
 import Modelo.Partida;
 import Modelo.ServicioJugadaBOT;
 import Modelo.TiposJugador;
-	//TODO segurament caldra un mock
+import Modelo.TiposPartida;
+	
 public class Vista {
+	private Validacion validacion; 
     private Partida partida;
-    public Vista(Partida partida){
+    ServicioJugadaBOT sb;
+    
+    public Vista(Partida partida,Validacion validacion, ServicioJugadaBOT sb){
         this.partida=partida;
+        this.validacion=validacion;
+        this.sb = sb;
     }
     
     public void mostrarIngreso(){
-    	//TODO passar Validación al controlador per a fer un mock
-        Validacion validacion = new DefaultValidacion(); 
         System.out.println("Ingrese Modo de Juego: ");
         System.out.println("[1] Jugador vs Jugador.");
         System.out.println("[2] Jugador vs BOT.");
         System.out.println("[3] BOT vs BOT.");
         System.out.println("[4] Cargarpartida.");
         System.out.println("[5] Salir.");
-        partida.setTipo(validacion.inTipo());      //falta excepcio per valors 
+        partida.setTipo(validacion.inTipo());    
     }
     
     public void registrarJugador(int j){
-        Validacion validacion = new DefaultValidacion();
+       
         System.out.println("Ingrese el Nombre del Jugador N° 0"+j+":");
         switch(j){
             case 1:
-                partida.setJugador1(new Jugador(validacion.inNombre(),TiposJugador.PERSONA));
-                break;
+            	switch(partida.getTipo()) {
+            	case BvB :
+            		System.out.println("Ingrese un Jugador possible");
+            		break;
+            	default:
+            		partida.setJugador1(new Jugador(validacion.inNombre(),TiposJugador.PERSONA));
+            	}
+            	break;
             case 2:
-                partida.setJugador2(new Jugador(validacion.inNombre(),TiposJugador.PERSONA));
+            	switch(partida.getTipo()) {
+            	case JvJ :
+            		partida.setJugador2(new Jugador(validacion.inNombre(),TiposJugador.PERSONA));
+            		break;
+            	default:
+            		System.out.println("Ingrese un Jugador possible");
+            	}
                 break;
+            default:
+            	System.out.println("Ingrese un Jugador possible");
         }               
     }
     
     
     public void establecerPuntos(){
-        Validacion validacion = new DefaultValidacion();
+      
         System.out.println("Ingrese Puntos necesarios para ganar: ");
         partida.setAlMejorDe(validacion.inInt());
+        
     }
     
     public Jugada realizarJugada(int j){       
-        Jugada jugada = new Jugada();
-        Validacion validacion = new DefaultValidacion();       
+        Jugada jugada = new Jugada();   
         switch (partida.getTipo()) {
             case JvJ:
                 switch(j){
@@ -57,6 +76,9 @@ public class Vista {
                     case 2:
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realice su jugada: ");
                         break;
+                    default:
+                    	System.out.println("no existeix el jugador");
+                    	break;
                 }
                 mostrarIngresoJugada();                   
                 jugada.setJugada_Seleccionada(validacion.inJugada());       
@@ -69,28 +91,32 @@ public class Vista {
                         jugada.setJugada_Seleccionada(validacion.inJugada()); 
                         break;
                     case 2:
-                        ServicioJugadaBOT sb = new ServicioJugadaBOT();
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realizo su jugada: ");
                         jugada = sb.jugar(jugada);
                         break;
+                    default:
+                    	System.out.println("no existeix el jugador");
+                    	break;
                 }   
                 break;
             case BvB:
                 switch(j){
                     case 1:
-                        ServicioJugadaBOT sb = new ServicioJugadaBOT();
                         System.out.println(partida.getJugador1().getNombreJugador()+" ,realice su jugada: ");
                         jugada = sb.jugar(jugada); 
                         break;
                         
                     case 2:
-                        ServicioJugadaBOT sb2 = new ServicioJugadaBOT();
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realizo su jugada: ");
-                        jugada = sb2.jugar(jugada);
+                        jugada = sb.jugar(jugada);
                         break;
+                    default:
+                    	System.out.println("no existeix el jugador");
+                    	break;
                 }    
                 break;
             default:
+            	
                 throw new AssertionError();
         }
         
@@ -106,23 +132,26 @@ public class Vista {
         return jugada;
     }
     
-    
     public void mostrarJugadas(int r){
-        System.out.println(partida.getJugador1().getNombreJugador()+" ha jugado "+formatoJugada(partida.getRondas().get(r).getJugada_Jugador1().getJugada_Seleccionada()));
-        System.out.println(partida.getJugador2().getNombreJugador()+" ha jugado "+formatoJugada(partida.getRondas().get(r).getJugada_Jugador2().getJugada_Seleccionada()));                      
+    	if(partida.getRondas().size() > r && 0 <= r) {
+    		System.out.println(partida.getJugador1().getNombreJugador()+" ha jugado "+formatoJugada(partida.getRondas().get(r).getJugada_Jugador1().getJugada_Seleccionada()));
+            System.out.println(partida.getJugador2().getNombreJugador()+" ha jugado "+formatoJugada(partida.getRondas().get(r).getJugada_Jugador2().getJugada_Seleccionada()));                      
+    	}else {
+    		System.out.println("la ronda no existeix");
+    	}
         //System.out.println(partida.getRondas().size());
     }
     
-    public boolean mostrarGanadorRonda(int i){
-    	Validacion validacion = new DefaultValidacion();       
+    public boolean mostrarGanadorRonda(int i){  //TODO no he estat segur de fer-lo
     	if(partida.getRondas().get(i).getGanadorRonda()!=null){
             System.out.println("El ganador de esta ronda es: "+partida.getRondas().get(i).getGanadorRonda().getNombreJugador());
         }
         else{
             System.out.println("Ronda empatada.");
         }
-        System.out.println("voleu guardar partida? 1 per confirmar");
-        if(validacion.inInt() == 1) {
+    	
+        System.out.println("voleu guardar partida? 7 per confirmar");
+        if(validacion.inInt() == 7) {
         	return true;
         }else {
         	return false;
@@ -130,7 +159,12 @@ public class Vista {
     }
     
     public void mostrarGanadorPartida(){
-        System.out.println("El ganador de la partida es: "+partida.getGanador().getNombreJugador());
+        if(partida.getGanador() != null) {
+        	System.out.println("El ganador de la partida es: "+partida.getGanador().getNombreJugador());
+        }else {
+        	
+        }
+    	
     }
     
     private void mostrarIngresoJugada(){
@@ -142,6 +176,7 @@ public class Vista {
     }
     
     private String formatoJugada(OpcionesJugada opcion){
+
         String retorno="";
         switch(opcion){
             case ROCK:
@@ -162,4 +197,7 @@ public class Vista {
         }        
         return retorno;
     }  
+    public Partida getPartida() {
+		return partida;	
+    }
 }

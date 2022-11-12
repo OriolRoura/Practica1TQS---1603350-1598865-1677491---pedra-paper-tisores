@@ -7,19 +7,18 @@ import Modelo.TiposPartida;
 import java.util.Scanner;
 public class MockValidacion implements Validacion{
     private Scanner in = new Scanner(System.in); 
-    int contadorIn=0;
-    int contadorInt = 3;
-    int contadorString =4;
-    int contadorJugada=0;
+    int contadorIn=4;
+    int contadorInt = 2;
+    int contadorString =2;
+    int contadorJugada=1;
     public TiposPartida inTipo(){
         TiposPartida tipo=null;                
         int entrada = 0;
         boolean valido = false;
         do {
-            entrada = contadorIn;
-            valido = true;               
-            if(entrada<5 && entrada>0){                   
-                switch(entrada){
+            if(contadorIn<5 && contadorIn>0){
+            	valido = true;
+                switch(contadorIn){
                     case 1:
                         tipo=TiposPartida.JvJ;
                         break;
@@ -32,8 +31,6 @@ public class MockValidacion implements Validacion{
                     case 4:
                         tipo=TiposPartida.C;
                         break;
-                    case 5:
-                        System.exit(0);
                 } 
                 
             }
@@ -45,7 +42,7 @@ public class MockValidacion implements Validacion{
             if(contadorIn == 5) {
             	contadorIn ++;
             }else if(contadorIn==7) {
-            		contadorIn = 0;
+            		contadorIn = 1;
             }
                 
         }while (!valido);       
@@ -53,14 +50,14 @@ public class MockValidacion implements Validacion{
     }
     
     public int inInt(){
-
+    	contadorInt++;
         return contadorInt;
     }
 
     
     public String inNombre(){
     	contadorString++;
-    	if(contadorString == 5) {
+    	if(contadorString == 3) {
     		contadorString=0;
     	}
     	switch(contadorString){
@@ -68,12 +65,8 @@ public class MockValidacion implements Validacion{
         	return (String)"Carmen";
         case 1:
         	return (String)"Martina";
-        case 2:
-        	return (String)"Jose";
-        case 3:
-        	return (String)"Pere";
         default:
-        	return (String)"Montoya";
+        	return (String)"Jose";
         	
     	}
     	
@@ -101,7 +94,7 @@ public class MockValidacion implements Validacion{
         }
 		contadorJugada++;
 		if(contadorJugada ==6) {
-			contadorJugada = 0;
+			contadorJugada = 1;
 		}
         return opcion;
     }
