@@ -5,6 +5,9 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+
 import org.junit.Rule;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 import org.junit.jupiter.api.AfterEach;
@@ -25,11 +28,6 @@ import static org.junit.Assert.*;
  */
 class TestValidacion {
 	Validacion v;
-	
-	
-	@Rule
-	public final TextFromStandardInputStream systemInMock
-	  = TextFromStandardInputStream.emptyStandardInputStream();
 	
 	
 	void run() {
@@ -53,17 +51,18 @@ class TestValidacion {
 	 */
 	@Test
 	void testInTipo() {
-
-		systemInMock.provideLines("1","2","3","4");
-
-		
+		String data = "1\n";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
 		assert (v.inTipo() == TiposPartida.JvJ); 
-		
-		assert (v.inTipo() ==  TiposPartida.JvJ);
-	
-		assert (v.inTipo() == TiposPartida.JvJ);
-		
-		assert (v.inTipo() == TiposPartida.JvJ);
+		data = "2\n";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
+		assert (v.inTipo() ==  TiposPartida.JvB);
+		data = "3\n";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
+		assert (v.inTipo() == TiposPartida.BvB);
+		data = "4\n";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
+		assert (v.inTipo() == TiposPartida.C);
 	}
 
 	/**
@@ -71,8 +70,9 @@ class TestValidacion {
 	 */
 	@Test
 	void testInInt() {
-		systemInMock.provideLines("2", "4");
-		assertEquals( v.inInt(),4);
+		String data = "1 2 3\n";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
+		assertEquals( v.inInt(),3);
 		
 	}
 
@@ -81,8 +81,10 @@ class TestValidacion {
 	 */
 	@Test
 	void testInNombre() {
-		systemInMock.provideLines("","Antonio");
-		assert (v.inNombre() == "Antonio");
+		String data = "Antonio";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
+		String an = "Antonio";
+		assert (v.inNombre().equals(an) );
 		
 	}
 
@@ -91,12 +93,25 @@ class TestValidacion {
 	 */
 	@Test
 	void testInJugada() {
-		systemInMock.provideLines("R","P","S","L","V");
+		String data = "R \n ";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
 		
 		assert ( v.inJugada() == OpcionesJugada.ROCK);
+
+		data = "P \n ";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
 		assert ( v.inJugada() == OpcionesJugada.PAPER);
+		
+		data = "S \n ";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
 		assert ( v.inJugada() == OpcionesJugada.SCISSORS);
+		
+		data = "L \n ";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
 		assert ( v.inJugada() == OpcionesJugada.LIZARD);
+		
+		data = "V \n ";
+		System.setIn(new ByteArrayInputStream(data.getBytes()));
 		assert ( v.inJugada() == OpcionesJugada.SPOCK);
 	}
 

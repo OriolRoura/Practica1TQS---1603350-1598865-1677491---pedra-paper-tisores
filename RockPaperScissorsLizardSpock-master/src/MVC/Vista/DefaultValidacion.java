@@ -10,9 +10,10 @@ public class DefaultValidacion implements Validacion {
         TiposPartida tipo=null;                
         int entrada = 0;
         boolean valido = false;
+        in = new Scanner(System.in); 
         do {
             try {
-                in = new Scanner(System.in); 
+                
                 entrada = in.nextInt();
                 valido = true;               
                 if(entrada<5 && entrada>0){                   
@@ -47,12 +48,12 @@ public class DefaultValidacion implements Validacion {
     public int inInt(){
         int entero= 0;
         boolean valido = false;
+        in = new Scanner(System.in); 
         do {
-            try {
-                in = new Scanner(System.in); 
-                entero = in.nextInt();
+            entero = in.nextInt();
+            if(entero > 2) {
                 valido = true;
-            }catch (Exception e){
+            }else {
                this.mostrarError("Entero mayor o igual a 3.");
             }
         }while (!valido);
@@ -62,8 +63,9 @@ public class DefaultValidacion implements Validacion {
     public String inNombre(){
         String entrada = "";
         boolean valido = false;
+        in = new Scanner(System.in); 
         do {
-            in = new Scanner(System.in); 
+            
             String input = in.next();
             if (entrada.equals(input)){
                 this.mostrarError("No nulo.");
@@ -79,8 +81,9 @@ public class DefaultValidacion implements Validacion {
         OpcionesJugada opcion =null;
         char caracter = ' ';
         boolean valido = false;
+        in = new Scanner(System.in);
         do {
-            in = new Scanner(System.in); 
+            
             String entrada = in.next();
             if (entrada.length() != 1) {
                 this.mostrarError("caracter");
