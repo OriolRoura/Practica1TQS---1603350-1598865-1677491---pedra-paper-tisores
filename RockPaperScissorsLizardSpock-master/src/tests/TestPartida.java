@@ -29,6 +29,7 @@ class TestPartida {
 		testAgregarRonda();
 		testExisteGanador();
 		testToString();
+		testgetIdPartida();
 		tearDown();
 		
 	}
@@ -37,7 +38,7 @@ class TestPartida {
 	@BeforeEach
 	void setUp() {
 		p = new Partida();
-
+		p.setIdPartida("id");
 	}
 	
 	
@@ -70,6 +71,11 @@ class TestPartida {
 
 	void testToString() {
 		p.toString();
+	}
+	
+	@Test
+	void testgetIdPartida() {
+		assert p.getIdPartida().equals("id");
 	}
 	
 	@AfterEach
