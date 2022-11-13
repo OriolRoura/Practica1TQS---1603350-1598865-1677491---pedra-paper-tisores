@@ -18,6 +18,7 @@ class TestOfTests {
 		TestServicioRonda t8 = new TestServicioRonda();
 		TestVista t9 = new TestVista();
 		TestValidacion t10 = new TestValidacion();
+		TestController t11 = new TestController();
 		t1.testJugadaJugadorOpcionesJugada();
 		t2.run();
 		t3.Run();
@@ -28,6 +29,7 @@ class TestOfTests {
 		t8.Run();
 		t9.testRun();
 		t10.run();
+		t11.testRun();
 	}
 
 }

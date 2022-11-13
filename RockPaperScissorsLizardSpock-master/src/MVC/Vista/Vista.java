@@ -57,4 +57,5 @@ public interface Vista {
     }
 
     public Partida getPartida();
+    public void setParida(Partida p);
 }

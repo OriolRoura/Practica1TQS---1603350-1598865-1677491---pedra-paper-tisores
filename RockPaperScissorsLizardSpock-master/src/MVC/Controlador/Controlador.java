@@ -30,12 +30,12 @@ public class Controlador {
     
     public void controlar(){
         vista.mostrarIngreso();
-        asignarJugadores();
         vista.establecerPuntos(); 
+        asignarJugadores();
         iniciarJuego();
     }
     
-    public void asignarJugadores(){        
+    private void asignarJugadores(){        
         switch (partida.getTipo()) { //fer un mock per a testegar
             case JvJ:
                 vista.registrarJugador(1); //també aqui
@@ -53,10 +53,11 @@ public class Controlador {
                 PartidaBaseDades partidaBaseDades = new MockPartidaBaseDades();
                 Partida p = partidaBaseDades.carregarPartida();
                 partida = p;
+                vista.setParida(p);
         }
     }
     
-    public void iniciarJuego(){
+    private void iniciarJuego(){
     	PartidaBaseDades partidaBaseDades = new MockPartidaBaseDades();
         ServicioPartida sp = new ServicioPartida();
         ServicioRonda sr = new ServicioRonda();

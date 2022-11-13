@@ -20,13 +20,6 @@ public class MockVista implements Vista {
         this.sb = sb;
     }
     public void mostrarIngreso(){
-        System.out.println("Ingrese Modo de Juego: ");
-        System.out.println("[1] Jugador vs Jugador.");
-        System.out.println("[2] Jugador vs BOT.");
-        System.out.println("[3] BOT vs BOT.");
-        System.out.println("[4] Cargarpartida.");
-        System.out.println("[5] Salir.");
-        partida.setTipo(validacion.inTipo());
     }
 
     public void registrarJugador(int j){
@@ -43,8 +36,6 @@ public class MockVista implements Vista {
 
 
     public void establecerPuntos(){
-        System.out.println("Ingrese Puntos necesarios para ganar: ");
-        partida.setAlMejorDe(validacion.inInt());
     }
 
     public Jugada realizarJugada(int j){
@@ -54,14 +45,16 @@ public class MockVista implements Vista {
                 switch(j){
                     case 1:
                         System.out.println(partida.getJugador1().getNombreJugador()+" ,realice su jugada: ");
+                        mostrarIngresoJugada();
+                        jugada.setJugada_Seleccionada(OpcionesJugada.PAPER);
                         break;
                     case 2:
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realice su jugada: ");
+                        mostrarIngresoJugada();
+                        jugada.setJugada_Seleccionada(OpcionesJugada.ROCK);
                         break;
                 }
-                mostrarIngresoJugada();
-
-                jugada.setJugada_Seleccionada(OpcionesJugada.ROCK);//MOCK RETORNEM ROCK
+//MOCK RETORNEM ROCK
                 break;
             case JvB:
                 switch(j){
@@ -72,7 +65,7 @@ public class MockVista implements Vista {
                         break;
                     case 2:;
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realizo su jugada: ");
-                        jugada = sb.jugar(jugada); //TODO retornem la Jugada que decidim predestinada en aquest MOCK, en aquest cas paper
+                        jugada.setJugada_Seleccionada(OpcionesJugada.ROCK);
                         break;
                 }
                 break;
@@ -80,13 +73,13 @@ public class MockVista implements Vista {
                 switch(j){
                     case 1:
                         System.out.println(partida.getJugador1().getNombreJugador()+" ,realice su jugada: ");
-                        jugada = sb.jugar(jugada);
+                        jugada.setJugada_Seleccionada(OpcionesJugada.PAPER);
                         break;
 
                     case 2:
 
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realizo su jugada: ");
-                        jugada = sb.jugar(jugada);
+                        jugada.setJugada_Seleccionada(OpcionesJugada.ROCK);
                         break;
                 }
                 break;
@@ -107,9 +100,7 @@ public class MockVista implements Vista {
 
 
     public void mostrarJugadas(int r){
-        System.out.println(partida.getJugador1().getNombreJugador()+" ha jugado "+formatoJugada(partida.getRondas().get(r).getJugada_Jugador1().getJugada_Seleccionada()));
-        System.out.println(partida.getJugador2().getNombreJugador()+" ha jugado "+formatoJugada(partida.getRondas().get(r).getJugada_Jugador2().getJugada_Seleccionada()));
-        //System.out.println(partida.getRondas().size());
+
     }
 
     public boolean mostrarGanadorRonda(int i){
@@ -125,7 +116,7 @@ public class MockVista implements Vista {
         }else {
             return false;
         }*/
-    	return false;
+    	return true;
     }
 
     public void mostrarGanadorPartida(){
@@ -165,6 +156,10 @@ public class MockVista implements Vista {
 	@Override
 	public Partida getPartida() {
 		return partida;
+	}
+	@Override
+	public void setParida(Partida p) {
+		partida = p;		
 	}
 }
 

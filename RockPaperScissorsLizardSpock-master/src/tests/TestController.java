@@ -23,7 +23,10 @@ import Modelo.TiposPartida;
 
 class TestController {
 	
-	Controlador con;
+	Controlador con1;
+	Controlador con2;
+	Controlador con3;
+	Controlador con4;
 	Vista jvj;
 	Vista jvb;
 	Vista bvb;
@@ -42,14 +45,16 @@ class TestController {
 	void testRun() {
 		SetUp();
 		
-		asignarJugadores();
-		iniciarJuego();
+		testControlar();
 		
 	}
 	
 
 	void SetUp(){
-		con = new Controlador();
+		con1 = new Controlador();
+		con2 = new Controlador();
+		con3 = new Controlador();
+		con4 = new Controlador();
 		PartidaBaseDades bd = new MockPartidaBaseDades();
 		p1 = new Partida();
 		p2 = new Partida();
@@ -58,7 +63,11 @@ class TestController {
 		p1.setIdPartida("test1");
 		p2.setIdPartida("test2");
 		p3.setIdPartida("test3");
-		p4.setIdPartida("test3");
+		p4.setIdPartida("test4");
+		p1.setAlMejorDe(2);
+		p2.setAlMejorDe(2);
+		p3.setAlMejorDe(2);
+		p4.setAlMejorDe(2);
 		p1.setRondas(new ArrayList());
 		p2.setRondas(new ArrayList());
 		p3.setRondas(new ArrayList());
@@ -71,66 +80,28 @@ class TestController {
 		c = new MockVista(p4, v, sb);
 		sp = new ServicioPartida();
 		sr = new ServicioRonda();
-		
-	}
-<<<<<<< Updated upstream
-	
-
-=======
-	 @Test
->>>>>>> Stashed changes
-    public void asignarJugadores(){  
+    	con1.setPartida(p1);
+    	con2.setPartida(p2);
+    	con3.setPartida(p3);
+    	con4.setPartida(p4);
     	p1.setTipo(TiposPartida.JvJ);  
-        //case JvJ:
-        jvj.registrarJugador(1);
-        jvj.registrarJugador(2);
-        assert p1.getJugador1() != null && p1.getJugador2() != null : "s'haurien d'assignar be";
-            
-    	p1.setTipo(TiposPartida.JvB);  
-        //case JvJ:
-        jvj.registrarJugador(1);
-        p1.setJugador2( new Jugador("BuenardoBOT",TiposJugador.BOT));
-    	assert p1.getJugador1() != null && p1.getJugador2() != null : "s'haurien d'assignar be";
-    	p1.setTipo(TiposPartida.BvB);  
-        //case JvJ:
-        p1.setJugador1( new Jugador("BuenardoBOT1",TiposJugador.BOT));
-        p1.setJugador2( new Jugador("BuenardoBOT2",TiposJugador.BOT));
-    	assert p1.getJugador1() != null && p1.getJugador2() != null : "s'haurien d'assignar be";
+    	p2.setTipo(TiposPartida.JvB);  
+    	p3.setTipo(TiposPartida.BvB);  
+    	p4.setTipo(TiposPartida.C); 
+    	con1.setVista(jvj);
+    	con2.setVista(jvb);
+    	con3.setVista(bvb);
+    	con4.setVista(c);
+	}
+	
+	
+    public void testControlar(){  
+
+    	con1.controlar();
+    	con2.controlar();
+    	con3.controlar();
+    	con4.controlar();;
     }
     
-    
-    public void iniciarJuego(){
-    	con.setVista(jvj);
-    	con.iniciarJuego();
-    	
-    	con.setVista(jvb);
-    	con.iniciarJuego();
-    	
-    	con.setVista(bvb);
-    	con.iniciarJuego();
-    }
-    
-    /*public void iniciarJuego2(){
-    	PartidaBaseDades partidaBaseDades = new MockPartidaBaseDades();
-        ServicioPartida sp = new ServicioPartida();
-        ServicioRonda sr = new ServicioRonda();
-        boolean guardar = false;
-        int i=0;
-        do{
-            System.out.println("Partida al mejor de :"+partida.getAlMejorDe());
-            realizarRonda(i);
-            sr.evaluarGanador(partida.getRondas().get(i));
-            guardar = vista.mostrarGanadorRonda(i);
-            sp.evaluarGanador(partida);
-            i++;
-            if(guardar) {
-            	partidaBaseDades.guardarPartida(partida);	
-            }
-        }while(partida.getGanador()==null);
-        	
-        vista.mostrarGanadorPartida();
-    }}/**/
-
-
 
 }

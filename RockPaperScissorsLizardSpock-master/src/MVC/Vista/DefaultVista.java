@@ -205,6 +205,10 @@ public class DefaultVista implements Vista{
     public Partida getPartida() {
 		return partida;	
     }
+	@Override
+	public void setParida(Partida p) {
+		partida = p;		
+	}
 }
 
 
