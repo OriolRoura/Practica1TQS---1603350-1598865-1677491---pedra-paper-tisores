@@ -6,11 +6,6 @@
 package Main;
 
 import MVC.Controlador.Controlador;
-import MVP_Pasiva.Presentador.PresentadorMenu;
-import MVP_Pasiva.Vista.IVMenu;
-import MVP_Pasiva.Vista.Validacion;
-import MVP_Pasiva.Vista.VMenuConsola;
-import MVP_Pasiva.Vista.VMenuSwing;
 import Modelo.Partida;
 
 /**

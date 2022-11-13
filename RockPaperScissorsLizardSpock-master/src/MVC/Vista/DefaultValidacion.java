@@ -2,6 +2,8 @@ package MVC.Vista;
 import Modelo.OpcionesJugada;
 import Modelo.TiposPartida;
 import java.util.Scanner;
+
+
 public class DefaultValidacion implements Validacion {
     private Scanner in = new Scanner(System.in); 
     public TiposPartida inTipo(){

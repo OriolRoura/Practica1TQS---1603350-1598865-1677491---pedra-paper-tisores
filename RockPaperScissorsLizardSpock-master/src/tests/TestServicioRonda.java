@@ -8,6 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Modelo.Jugada;
@@ -39,7 +41,7 @@ class TestServicioRonda {
 	/**
 	 * Test method for {@link Modelo.ServicioRonda#evaluarGanador(Modelo.Ronda)}.
 	 */
-	@Before
+	@BeforeEach
 
 	void SetUp() {
 		p = new Partida();
@@ -96,7 +98,7 @@ class TestServicioRonda {
 			assert rondas.get(i).getGanadorRonda() == victory[i] : String.format("no ha guanyate el que havia de guanyar en la ronda [%i]", i);
 		}
 	}
-	@After
+	@AfterEach
 	void tearDown() {
 		 p = null;
 		 sp = null;

@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import MVC.Vista.DefaultVista;
@@ -46,6 +48,7 @@ class TestVista {
 		tearDown();
 	}
 	
+	@BeforeEach
 	void SetUp(){
 		PartidaBaseDades bd = new MockPartidaBaseDades();
 		p1 = new Partida();
@@ -210,6 +213,7 @@ class TestVista {
 		c.mostrarGanadorPartida();
 	}
 	
+	@AfterEach
 	void tearDown() {
 		jvj = null;
 		jvb = null;

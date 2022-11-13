@@ -5,6 +5,8 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Modelo.Jugador;
@@ -32,7 +34,7 @@ class TestPartida {
 	}
 	
 	
-	@Before
+	@BeforeEach
 	void setUp() {
 		p = new Partida();
 
@@ -70,7 +72,7 @@ class TestPartida {
 		p.toString();
 	}
 	
-	@After 
+	@AfterEach
 	void tearDown() {
 		p = null;
 		System.gc();

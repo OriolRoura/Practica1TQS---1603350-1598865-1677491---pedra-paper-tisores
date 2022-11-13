@@ -17,6 +17,7 @@ class TestOfTests {
 		TestServicioPartida t7 = new TestServicioPartida();
 		TestServicioRonda t8 = new TestServicioRonda();
 		TestVista t9 = new TestVista();
+		TestValidacion t10 = new TestValidacion();
 		t1.testJugadaJugadorOpcionesJugada();
 		t2.run();
 		t3.Run();
@@ -26,6 +27,7 @@ class TestOfTests {
 		t7.Run();
 		t8.Run();
 		t9.testRun();
+		t10.run();
 	}
 
 }

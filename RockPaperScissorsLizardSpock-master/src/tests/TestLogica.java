@@ -5,13 +5,13 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Modelo.Jugada;
 import Modelo.Logica;
 import Modelo.OpcionesJugada;
-import org.junit.After;
-import org.junit.Before;
 
 
 /**
@@ -35,7 +35,7 @@ class TestLogica {
 	}
 	
 
-	@Before
+	@BeforeEach
 	void SetUp() {
 		lt = new Logica();
 		isRock = new Jugada(); 		isRock.setJugada_Seleccionada(OpcionesJugada.ROCK);
@@ -112,7 +112,7 @@ class TestLogica {
 		assertEquals(lizardvsLizard, null);
 	}
 
-	@After
+	@AfterEach
 	void tearDown() {
 		isRock = null; 
 		isPaper = null; 

@@ -6,7 +6,8 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.After;
 import org.junit.Before;
-
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Modelo.Jugador;
@@ -32,7 +33,7 @@ void run() {
 	
 	tearDown();
 }
-	@Before
+	@BeforeEach
 	void setUp() {
 		j = new Jugador("..dadw",TiposJugador.PERSONA);
 	}
@@ -106,7 +107,7 @@ void run() {
 		j.toString();
 	}
 	
-	@After
+	@AfterEach
 	void tearDown() {
 		j = null;
 		System.gc();
