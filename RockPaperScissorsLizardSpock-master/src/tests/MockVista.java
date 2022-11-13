@@ -60,18 +60,19 @@ public class MockVista implements Vista {
                         break;
                 }
                 mostrarIngresoJugada();
-                jugada.setJugada_Seleccionada(validacion.inJugada());//TODO fer que retorni algo
+
+                jugada.setJugada_Seleccionada(OpcionesJugada.ROCK);//MOCK RETORNEM ROCK
                 break;
             case JvB:
                 switch(j){
                     case 1:
                         System.out.println(partida.getJugador1().getNombreJugador()+" ,realice su jugada: ");
                         mostrarIngresoJugada();
-                        jugada.setJugada_Seleccionada(validacion.inJugada()); 
+                        jugada.setJugada_Seleccionada(OpcionesJugada.PAPER); 
                         break;
                     case 2:;
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realizo su jugada: ");
-                        jugada = sb.jugar(jugada); //TODO fer que retorni algo
+                        jugada = sb.jugar(jugada); //TODO retornem la Jugada que decidim predestinada en aquest MOCK, en aquest cas paper
                         break;
                 }
                 break;
@@ -112,7 +113,7 @@ public class MockVista implements Vista {
     }
 
     public boolean mostrarGanadorRonda(int i){
-        if(partida.getRondas().get(i).getGanadorRonda()!=null){
+        /*if(partida.getRondas().get(i).getGanadorRonda()!=null){
             System.out.println("El ganador de esta ronda es: "+partida.getRondas().get(i).getGanadorRonda().getNombreJugador());
         }
         else{
@@ -123,7 +124,8 @@ public class MockVista implements Vista {
             return true;
         }else {
             return false;
-        }
+        }*/
+    	return false;
     }
 
     public void mostrarGanadorPartida(){

@@ -73,8 +73,12 @@ class TestController {
 		sr = new ServicioRonda();
 		
 	}
+<<<<<<< Updated upstream
 	
 
+=======
+	 @Test
+>>>>>>> Stashed changes
     public void asignarJugadores(){  
     	p1.setTipo(TiposPartida.JvJ);  
         //case JvJ:
