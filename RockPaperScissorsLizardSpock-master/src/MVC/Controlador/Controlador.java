@@ -67,7 +67,8 @@ public class Controlador {
             System.out.println("Partida al mejor de :"+partida.getAlMejorDe());
             realizarRonda(i);
             sr.evaluarGanador(partida.getRondas().get(i));
-            guardar = vista.mostrarGanadorRonda(i); // TODO automatocament decidir si guardar o no(s'ha de fer els 2)
+            guardar = false;
+            /*guardar = vista.mostrarGanadorRonda(i); // TODO automatocament decidir si guardar o no(s'ha de fer els 2)*/
             sp.evaluarGanador(partida);
             i++;
             if(guardar) {
@@ -81,8 +82,17 @@ public class Controlador {
     private void realizarRonda(int r){
         Ronda ronda = new Ronda(r+1);
         System.out.println("Ronda N°"+(r+1)+":");
-        ronda.setJugada_Jugador1(vista.realizarJugada(1));   // TODO automatocament decir la jugada del jugador          
-        ronda.setJugada_Jugador2(vista.realizarJugada(2));   // TODO automatocament decir la jugada del jugador
+        
+        Jugada jugada= new Jugada();
+        Jugada jugada2 = new Jugada();
+
+        jugada2.setJugada_Seleccionada(OpcionesJugada.PAPER);
+        jugada.setJugada_Seleccionada(OpcionesJugada.ROCK);
+        
+        ronda.setJugada_Jugador1(jugada);
+        ronda.setJugada_Jugador2(jugada2);
+        /*ronda.setJugada_Jugador1(vista.realizarJugada(1));   // TODO FET automatocament decir la jugada del jugador          
+        ronda.setJugada_Jugador2(vista.realizarJugada(2));   // TODO FET automatocament decir la jugada del jugador*/
         partida.agregarRonda(ronda);
         vista.mostrarJugadas(r);
     }
