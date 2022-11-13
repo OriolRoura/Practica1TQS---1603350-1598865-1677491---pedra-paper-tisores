@@ -49,7 +49,7 @@ public class Controlador {
                 partida.setJugador1( new Jugador("DayanBOT",TiposJugador.BOT));
                 partida.setJugador2( new Jugador("BuenardoBOT",TiposJugador.BOT));    
                 break;
-            case C:
+            case C: 
                 PartidaBaseDades partidaBaseDades = new MockPartidaBaseDades();
                 Partida p = partidaBaseDades.carregarPartida();
                 partida = p;
@@ -63,10 +63,11 @@ public class Controlador {
         boolean guardar = false;
         int i=0;
         do{
+        	guardar = false;
             System.out.println("Partida al mejor de :"+partida.getAlMejorDe());
             realizarRonda(i);
             sr.evaluarGanador(partida.getRondas().get(i));
-            guardar = vista.mostrarGanadorRonda(i);
+            guardar = vista.mostrarGanadorRonda(i); // TODO automatocament decidir si guardar o no(s'ha de fer els 2)
             sp.evaluarGanador(partida);
             i++;
             if(guardar) {
@@ -77,11 +78,11 @@ public class Controlador {
         vista.mostrarGanadorPartida();
     }
     
-    public void realizarRonda(int r){
+    private void realizarRonda(int r){
         Ronda ronda = new Ronda(r+1);
         System.out.println("Ronda N°"+(r+1)+":");
-        ronda.setJugada_Jugador1(vista.realizarJugada(1));                
-        ronda.setJugada_Jugador2(vista.realizarJugada(2));      
+        ronda.setJugada_Jugador1(vista.realizarJugada(1));   // TODO automatocament decir la jugada del jugador          
+        ronda.setJugada_Jugador2(vista.realizarJugada(2));   // TODO automatocament decir la jugada del jugador
         partida.agregarRonda(ronda);
         vista.mostrarJugadas(r);
     }

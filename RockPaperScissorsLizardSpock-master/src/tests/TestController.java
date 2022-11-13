@@ -2,10 +2,13 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import MVC.Controlador.Controlador;
 import MVC.Vista.DefaultVista;
 import MVC.Vista.Validacion;
 import MVC.Vista.Vista;
@@ -19,7 +22,8 @@ import Modelo.TiposJugador;
 import Modelo.TiposPartida;
 
 class TestController {
-
+	
+	Controlador con;
 	Vista jvj;
 	Vista jvb;
 	Vista bvb;
@@ -30,6 +34,10 @@ class TestController {
 	Partida p4;
     ServicioPartida sp;
     ServicioRonda sr;
+    ServicioJugadaBOT sb;
+    Validacion v;
+    
+    
 	@Test
 	void testRun() {
 		SetUp();
@@ -39,7 +47,9 @@ class TestController {
 		
 	}
 	
+
 	void SetUp(){
+		con = new Controlador();
 		PartidaBaseDades bd = new MockPartidaBaseDades();
 		p1 = new Partida();
 		p2 = new Partida();
@@ -53,16 +63,18 @@ class TestController {
 		p2.setRondas(new ArrayList());
 		p3.setRondas(new ArrayList());
 		p4.setRondas(new ArrayList());
-		ServicioJugadaBOT sb = new MockServicioJugadaBOT();
-		Validacion v = new MockValidacion();
-		jvj = new DefaultVista(p1,v, sb);
-		jvb = new DefaultVista(p2,v, sb);
-		bvb = new DefaultVista(p3,v, sb);
-		c = new DefaultVista(p4, v, sb);
+		sb = new MockServicioJugadaBOT();
+		v = new MockValidacion();
+		jvj = new MockVista(p1,v, sb);
+		jvb = new MockVista(p2,v, sb);
+		bvb = new MockVista(p3,v, sb);
+		c = new MockVista(p4, v, sb);
 		sp = new ServicioPartida();
 		sr = new ServicioRonda();
+		
 	}
 	
+
     public void asignarJugadores(){  
     	p1.setTipo(TiposPartida.JvJ);  
         //case JvJ:
@@ -84,7 +96,14 @@ class TestController {
     
     
     public void iniciarJuego(){
+    	con.setVista(jvj);
+    	con.iniciarJuego();
     	
+    	con.setVista(jvb);
+    	con.iniciarJuego();
+    	
+    	con.setVista(bvb);
+    	con.iniciarJuego();
     }
     
     /*public void iniciarJuego2(){

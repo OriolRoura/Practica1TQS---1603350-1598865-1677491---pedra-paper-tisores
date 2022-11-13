@@ -60,18 +60,18 @@ public class MockVista implements Vista {
                         break;
                 }
                 mostrarIngresoJugada();
-                jugada.setJugada_Seleccionada(validacion.inJugada());
+                jugada.setJugada_Seleccionada(validacion.inJugada());//TODO fer que retorni algo
                 break;
             case JvB:
                 switch(j){
                     case 1:
                         System.out.println(partida.getJugador1().getNombreJugador()+" ,realice su jugada: ");
                         mostrarIngresoJugada();
-                        jugada.setJugada_Seleccionada(validacion.inJugada());
+                        jugada.setJugada_Seleccionada(validacion.inJugada()); 
                         break;
                     case 2:;
                         System.out.println(partida.getJugador2().getNombreJugador()+" ,realizo su jugada: ");
-                        jugada = sb.jugar(jugada);
+                        jugada = sb.jugar(jugada); //TODO fer que retorni algo
                         break;
                 }
                 break;
@@ -101,7 +101,6 @@ public class MockVista implements Vista {
                 jugada.setJugador(partida.getJugador2());
                 break;
         }
-
         return jugada;
     }
 
