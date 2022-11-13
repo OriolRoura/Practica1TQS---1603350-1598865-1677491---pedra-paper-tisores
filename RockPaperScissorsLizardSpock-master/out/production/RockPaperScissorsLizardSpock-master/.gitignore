@@ -1,6 +1,7 @@
+/Imagenes/
 /MVC/
-/Modelo/
 /MVP_Pasiva/
-/Perisistencia/
 /Main/
-/MockPartidaBaseDades.class
+/Modelo/
+/Perisistencia/
+/tests/
