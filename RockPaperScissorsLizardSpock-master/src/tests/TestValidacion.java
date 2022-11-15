@@ -60,7 +60,7 @@ class TestValidacion {
 		data = "3\n";
 		System.setIn(new ByteArrayInputStream(data.getBytes()));
 		assert (v.inTipo() == TiposPartida.BvB);
-		data = "4\n";
+		data = "7\n 4\n";
 		System.setIn(new ByteArrayInputStream(data.getBytes()));
 		assert (v.inTipo() == TiposPartida.C);
 	}

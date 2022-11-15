@@ -12,7 +12,9 @@ package MVC.Vista;
 
 
 public class DefaultVista implements Vista{
-
+	
+	
+	
 	private Validacion validacion; 
     private Partida partida;
     ServicioJugadaBOT sb;

@@ -12,11 +12,10 @@ public class DefaultValidacion implements Validacion {
         boolean valido = false;
         in = new Scanner(System.in); 
         do {
-            try {
-                
                 entrada = in.nextInt();
-                valido = true;               
-                if(entrada<5 && entrada>0){                   
+              
+                if(entrada<5 && entrada>0){   
+                    valido = true; 
                     switch(entrada){
                         case 1:
                             tipo=TiposPartida.JvJ;
@@ -38,9 +37,6 @@ public class DefaultValidacion implements Validacion {
                     System.out.println("Valor de entrada fuera de rango.");
                     System.out.println("Ingrese uno nuevo:");
                 }
-            }catch (Exception e){
-               this.mostrarError("Entero");                  
-            }
         }while (!valido);       
         return tipo;
     }

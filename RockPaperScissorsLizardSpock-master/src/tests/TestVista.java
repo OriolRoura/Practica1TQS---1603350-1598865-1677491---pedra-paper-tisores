@@ -5,6 +5,8 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
@@ -19,7 +21,9 @@ import Modelo.*;
  *
  */
 class TestVista {
-
+	private final PrintStream standardOut = System.out;
+	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+	
 	Vista jvj;
 	Vista jvb;
 	Vista bvb;
@@ -45,6 +49,8 @@ class TestVista {
 		
 		tearDown();
 	}
+	
+	
 	
 	void SetUp(){
 		PartidaBaseDades bd = new MockPartidaBaseDades();
